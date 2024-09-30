@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace CryptoGenerators
 {
-    interface IGenerator
+    public interface IGenerator
     {
-        BitArray GenBits(double alpha, ulong length);
+        BitArray GenBits(uint seed, int length);
     }
 }

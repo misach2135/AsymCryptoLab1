@@ -9,7 +9,7 @@ namespace CryptoGenerators
 {
     public class SystemGenerator : IGenerator
     {
-        public BitArray GenBits(double alpha, ulong length)
+        public BitArray GenBits(uint seed, int length)
         {
             throw new NotImplementedException();
         }
