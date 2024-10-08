@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGenerators", "CryptoGenerators\CryptoGenerators.csproj", "{E3329EB1-3EB8-4339-98F6-BA4A6B277749}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoGenerators", "CryptoGenerators\CryptoGenerators.csproj", "{E3329EB1-3EB8-4339-98F6-BA4A6B277749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGeneratorsTests", "CryptoGeneratorsTests\CryptoGeneratorsTests.csproj", "{1F2FA3B3-AA97-4B76-8C53-80FE1800DD15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoGeneratorsTests", "CryptoGeneratorsTests\CryptoGeneratorsTests.csproj", "{1F2FA3B3-AA97-4B76-8C53-80FE1800DD15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

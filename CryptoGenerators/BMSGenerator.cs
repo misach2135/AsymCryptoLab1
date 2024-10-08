@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace CryptoGenerators
 {
     // TODO: find out chunking in the begining of the sequence
-    public class BMSGenerator : IGenerator
+    public class BBSGenerator : IGenerator
     {
         private readonly BigInteger p = BigInteger.Parse("d5bbb96d30086ec484eba3d7f9caeb07", System.Globalization.NumberStyles.AllowHexSpecifier);
         private readonly BigInteger q = BigInteger.Parse("425d2b9bfdb25b9cf6c416cc6e37b59c1f", System.Globalization.NumberStyles.AllowHexSpecifier);
         private readonly BigInteger n;
 
-        public BMSGenerator()
+        public BBSGenerator()
         {
             n = p * q;
         }

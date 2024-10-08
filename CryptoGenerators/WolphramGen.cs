@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BitWizzardy;
+
 namespace CryptoGenerators
 {
     public class WolphramGenerator : IGenerator
@@ -18,7 +20,7 @@ namespace CryptoGenerators
             for (int i = 0; i < length; i++)
             {
                 res[i] = (r_i % 2) == 1;
-                r_i = Utils.LeftCyclicShift(r_i) ^ (r_i | Utils.RightCyclicShift(r_i));
+                r_i = BitWizzardyUtils.LeftCyclicShift(r_i) ^ (r_i | BitWizzardyUtils.RightCyclicShift(r_i));
             }
             
             return res;

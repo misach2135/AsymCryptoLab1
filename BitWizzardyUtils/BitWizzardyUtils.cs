@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace CryptoGenerators
+namespace BitWizzardy
 {
-    public static class Utils
+    public static class BitWizzardyUtils
     {
         public static uint RightCyclicShift(uint num, int t = 1)
         {
@@ -31,5 +28,7 @@ namespace CryptoGenerators
 
             return sb.ToString();
         }
+
+        public static ushort ShortFromBytes(byte b1, byte b2) => (ushort)((b1) | (b2 << 8));
     }
 }
