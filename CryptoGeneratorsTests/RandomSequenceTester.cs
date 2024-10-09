@@ -120,7 +120,7 @@ namespace CryptoGeneratorsTests
 
             for (int i = 0; i < 256; i++)
             {
-                hiSquare += ((bytesCount[i] - n_j) * (bytesCount[i] - n_j)) / n_j;
+                hiSquare += (double)((bytesCount[i] - n_j) * (bytesCount[i] - n_j)) / n_j;
             }
 
             double doubleLsquared = Math.Sqrt(2 * 255);
