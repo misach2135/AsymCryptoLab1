@@ -16,25 +16,23 @@ namespace CryptoGeneratorsTests
             byte[] bytes = new byte[bitArr.Length / 8];
 
             bitArr.CopyTo(bytes, 0);
-            
-            Random rand = new();
 
-            Console.WriteLine(Convert.ToString(bytes));
+            //Console.WriteLine(Convert.ToHexString(bytes));
 
             RandomSequenceTester rndTest = new();
             Console.WriteLine(Convert.ToString(rndTest.PerformTest(bytes, 0.01), 2));
         }
 
         static void Main(string[] args)
-        {
-            LibrarianGenerator librarian = new("natural_text.txt");
+        {   
+            L20Generator l20Generator = new ();   
             WolframGenerator wolframGen = new();
             BMGenerator bMGenerator = new();
             BBSGenerator bMSGenerator = new();
 
             for (int i = 0; i < 10; i++)
             {
-                TestGenerator(librarian, 1_000_000);
+                TestGenerator(l20Generator, 20_000_000);
             }
         }
     }
