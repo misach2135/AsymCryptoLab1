@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace CryptoGenerators
 {
-    // TODO: find out chunking in the begining of the sequence
+    // TODO: find out chunking in the begining of the sequence 
+    // Update: Seems everything is allright. 
     public class BBSGenerator : IGenerator
     {
         private readonly BigInteger p = BigInteger.Parse("d5bbb96d30086ec484eba3d7f9caeb07", System.Globalization.NumberStyles.AllowHexSpecifier);

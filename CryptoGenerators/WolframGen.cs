@@ -9,7 +9,7 @@ using BitWizzardy;
 
 namespace CryptoGenerators
 {
-    public class WolphramGenerator : IGenerator
+    public class WolframGenerator : IGenerator
     {
         public BitArray GenBits(uint seed, int length)
         {

@@ -28,7 +28,6 @@ namespace BitWizzardy
 
             return sb.ToString();
         }
-
         public static ushort ShortFromBytes(byte b1, byte b2) => (ushort)((b1) | (b2 << 8));
     }
 }
