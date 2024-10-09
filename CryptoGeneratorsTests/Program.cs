@@ -24,14 +24,15 @@ namespace CryptoGeneratorsTests
         }
 
         static void Main(string[] args)
-        {
+        {   
+            L20Generator l20Generator = new ();   
             WolframGenerator wolframGen = new();
             BMGenerator bMGenerator = new();
             BBSGenerator bMSGenerator = new();
 
             for (int i = 0; i < 10; i++)
             {
-                TestGenerator(bMGenerator, 20_000_000);
+                TestGenerator(l20Generator, 20_000_000);
             }
         }
     }
