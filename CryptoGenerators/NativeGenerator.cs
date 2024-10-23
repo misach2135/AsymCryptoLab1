@@ -4,9 +4,9 @@ using System.Collections;
 
 namespace CryptoGenerators
 {
-    internal class nativeGen : IGenerator
+    public class NativeGenerator : IGenerator
     {
-        public BitArray GenBits(uint seed, int length)
+        public BitArray GenBits(long seed, int length)
         {
             var rand = new Random();
             byte[] bytes = new byte[length];

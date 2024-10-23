@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitWizzardy;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CryptoGenerators
 {
+
     public class LibrarianGenerator : IGenerator
     {
         BitArray data;
@@ -19,6 +21,7 @@ namespace CryptoGenerators
                 throw new FileNotFoundException(string.Format("{0} cannot be found.", filename));
             }
             List<byte> bytes = [];
+
             using (StreamReader reader = new(filename, Encoding.ASCII))
             {
                 while (!reader.EndOfStream)
@@ -26,10 +29,11 @@ namespace CryptoGenerators
                     bytes.Add((byte)reader.Read());
                 }
             }
+
             data = new BitArray(bytes.ToArray());
         }
 
-        public BitArray GenBits(uint seed, int length)
+        public BitArray GenBits(long seed, int length)
         {
             BitArray res = new(length);
             seed = Convert.ToUInt32(seed % data.Count);

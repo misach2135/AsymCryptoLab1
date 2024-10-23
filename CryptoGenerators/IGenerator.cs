@@ -9,6 +9,6 @@ namespace CryptoGenerators
 {
     public interface IGenerator
     {
-        BitArray GenBits(uint seed, int length);
+        BitArray GenBits(long seed, int length);
     }
 }

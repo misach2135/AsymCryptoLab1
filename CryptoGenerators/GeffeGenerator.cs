@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CryptoGenerators
 {
-    public class SystemGenerator : IGenerator
+    public class GeffeGenerator : IGenerator
     {
-        public BitArray GenBits(uint seed, int length)
+        public BitArray GenBits(long seed, int length)
         {
             throw new NotImplementedException();
         }

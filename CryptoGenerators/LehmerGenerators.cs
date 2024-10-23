@@ -2,6 +2,7 @@
 
 namespace LehmerGenerator  
 {
+    // TODO: Seperate LehmerLow from LehmerHigh for preserve code paradigm
     public class LehmerGenerator
     {
         private const ulong m = 4294967296;

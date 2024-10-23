@@ -11,11 +11,11 @@ namespace CryptoGenerators
 {
     public class WolframGenerator : IGenerator
     {
-        public BitArray GenBits(uint seed, int length)
+        public BitArray GenBits(long seed, int length)
         {
             BitArray res = new BitArray(length);
 
-            uint r_i = seed;
+            long r_i = seed;
 
             for (int i = 0; i < length; i++)
             {

@@ -17,7 +17,7 @@ namespace CryptoGenerators
         private readonly BigInteger q = BigInteger.Parse("0675215cc3e227d3216c056cfa8f8822bb486f788641e85e0de77097e1db049f1", System.Globalization.NumberStyles.AllowHexSpecifier);
 
         // uint may be vulnerability!!
-        public BitArray GenBits(uint seed, int length)
+        public BitArray GenBits(long seed, int length)
         {
             BitArray res = new(length);
             BigInteger t_prev = new(seed);  // aka t_0

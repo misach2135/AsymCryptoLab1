@@ -21,7 +21,7 @@ namespace CryptoGenerators
             n = p * q;
         }
 
-        public BitArray GenBits(uint seed, int length)
+        public BitArray GenBits(long seed, int length)
         {
             BitArray res = new(length);
             BigInteger r_prev = new(seed);

@@ -5,9 +5,9 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoGenerators", "CryptoGenerators\CryptoGenerators.csproj", "{E3329EB1-3EB8-4339-98F6-BA4A6B277749}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoGeneratorsTests", "CryptoGeneratorsTests\CryptoGeneratorsTests.csproj", "{1F2FA3B3-AA97-4B76-8C53-80FE1800DD15}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitWizzardy", "BitWizzardy\BitWizzardy.csproj", "{B1BC56CE-542D-4536-A6B7-7D2983CC0224}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGeneratorsAnalyzer", "CryptoGeneratorsAnalyzer\CryptoGeneratorsAnalyzer.csproj", "{1B721822-A07A-49A8-85DB-B5C1D36F48A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{E3329EB1-3EB8-4339-98F6-BA4A6B277749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3329EB1-3EB8-4339-98F6-BA4A6B277749}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3329EB1-3EB8-4339-98F6-BA4A6B277749}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F2FA3B3-AA97-4B76-8C53-80FE1800DD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F2FA3B3-AA97-4B76-8C53-80FE1800DD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F2FA3B3-AA97-4B76-8C53-80FE1800DD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F2FA3B3-AA97-4B76-8C53-80FE1800DD15}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1BC56CE-542D-4536-A6B7-7D2983CC0224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1BC56CE-542D-4536-A6B7-7D2983CC0224}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1BC56CE-542D-4536-A6B7-7D2983CC0224}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1BC56CE-542D-4536-A6B7-7D2983CC0224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B721822-A07A-49A8-85DB-B5C1D36F48A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B721822-A07A-49A8-85DB-B5C1D36F48A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B721822-A07A-49A8-85DB-B5C1D36F48A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B721822-A07A-49A8-85DB-B5C1D36F48A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

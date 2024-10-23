@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 using BitWizzardy;
 
-namespace CryptoGeneratorsTests
+namespace CryptoGenerators.Tests
 {
-    class RandomSequenceTester
+    public class RandomSequenceTester
     {
         private byte[] bytes;
         private int[] bytesCount;

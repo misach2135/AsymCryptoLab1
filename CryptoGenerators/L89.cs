@@ -29,7 +29,7 @@ public class L89Generator : IGenerator
     }
     public bool NextBit()
     {
-        bool nextBit = register[38] ^ register[89];
+        bool nextBit = register[37] ^ register[88];
 
         for (int i = 88; i > 0; i--)
         {
@@ -41,7 +41,7 @@ public class L89Generator : IGenerator
         return nextBit;
     }
 
-    public BitArray GenBits(uint seed, int length)
+    public BitArray GenBits(long seed, int length)
     {
         Initialize(Convert.ToString(seed, 2).PadLeft(89, '0'));
         BitArray sequence = new(length);

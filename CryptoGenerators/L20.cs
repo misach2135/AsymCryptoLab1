@@ -17,9 +17,14 @@ public class L20Generator : IGenerator
 
     public void Initialize(string initialValues)
     {
-        if (initialValues.Length != 20)
+        if (initialValues.Length < 20)
         {
-            throw new ArgumentException("initial values string must be 20 bits long");
+            initialValues = initialValues.PadLeft(20, '0');
+        }
+
+        if (initialValues.Length > 20)
+        {
+            initialValues = initialValues.Remove(20, initialValues.Length - 20);
         }
 
         for (int i = 0; i < 20; i++)
@@ -41,9 +46,9 @@ public class L20Generator : IGenerator
         return nextBit;
     }
 
-    public BitArray GenBits(uint seed, int length)
+    public BitArray GenBits(long seed, int length)
     {
-        Initialize(Convert.ToString(seed, 2).PadLeft(20, '0'));
+        Initialize(Convert.ToString(seed, 2));
         BitArray sequence = new(length);
 
         for (int i = 0; i < length; i++)
