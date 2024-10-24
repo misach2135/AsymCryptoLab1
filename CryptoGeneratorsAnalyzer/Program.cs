@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Intrinsics;
 using System.Security.Cryptography;
 using System.Text;
+using BitWizzardy;
 using CryptoGenerators;
 using CryptoGenerators.Seed;
 using CryptoGenerators.Tests;
@@ -36,5 +38,6 @@ namespace CryptoGeneratorsAnalyzer
                 Console.WriteLine("\n");
             }
         }
+
     }
 }

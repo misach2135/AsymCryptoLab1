@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics;
 using System.Text;
 
 namespace BitWizzardy
@@ -35,5 +38,13 @@ namespace BitWizzardy
             throw new NotImplementedException();
             return null;
         }
+
+        public static int GetBit(this Vector128<int> vector, int i)
+        {
+            int blockId = i / 32;
+            i = i % 32;
+            return (vector[blockId] & (1 << i)) >> i;
+        }
+
     }
 }
