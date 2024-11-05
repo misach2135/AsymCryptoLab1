@@ -8,57 +8,62 @@ using System.Runtime.Intrinsics;
 using System.Threading.Tasks;
 
 namespace BitWizzardy
-{
-
-    // This is not production-ready implementation, and using it very carefully.
-    // Will be better to upgrade this impl)
-    // Finded issues:
-    // 1. initState is not checked for size, whicj is important for state, becouse can break up state
-    // 2. ...
-
+{ 
     public class LFSR128
     {
-        private Vector128<int> state;
-        private int[] mask;
-        private int deg;
+        private UInt128 _state;
+        private int[] _mask;
+        private int _deg;
 
-        public LFSR128(int[] initState, int deg, int[] poly)
+        public UInt128 State
         {
-            state = Vector128.Create(initState);
-            mask = new int[poly.Length];
-            poly.CopyTo(mask, 0);
-            this.deg = deg;
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                var stateMask = (((UInt128.One << _deg) - 1));
+                _state = value & stateMask;
+            }
+        }
+
+        public LFSR128(UInt128 state, int deg, int[] poly)
+        {
+            if (_deg > 128)
+            {
+                throw new Exception("Degree bigger then 127 is not supported.");
+            }
+            _deg = deg;
+            State = state;
+            _mask = new int[poly.Length];
+            poly.CopyTo(_mask, 0);
             foreach (int index in poly)
             {
-                if (index >= deg)
+                if (index >= _deg)
                 {
                     throw new Exception($"{GetType()}: polynom index greater than {deg}");
                 }
             }
         }
 
-        public void SetState(int[] initState)
-        {
-            state = Vector128.Create(initState);
-        }
-
         public override string ToString()
         {
-            return state.ToString();
+            return _state.ToString();
         }
 
         public int Next()
         {
-            int res = (state & Vector128<int>.One).ToScalar();
-            int newBit = 0;
+            int res = (int)(_state & UInt128.One);
+            byte newBit = 0;
 
-            for (int i = 0; i < mask.Length; i++)
+            for (int i = 0; i < _mask.Length; i++)
             {
-                newBit ^= state.GetBit(mask[i]);
+                newBit ^= _state.GetBit(_mask[i]);
             }
             
-            state >>= 1;
-            state = (Vector128.CreateScalar(newBit) << deg - 1) | state;
+            _state >>= 1;
+            _state = _state | ((newBit & UInt128.One) << _deg - 1);
             
             return res;
         }

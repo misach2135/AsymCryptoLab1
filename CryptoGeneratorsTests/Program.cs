@@ -49,19 +49,33 @@ namespace CryptoGeneratorsTests
             //generators.Add(new L89Generator());
             //generators.Add(new GeffeGenerator());
             //generators.Add(new LibrarianGenerator("librarianText.txt"));
-            generators.Add(new WolframGenerator());
+            //generators.Add(new WolframGenerator());
             //generators.Add(new BMGenerator());
             //generators.Add(new BBSGenerator());
 
-            PrintAllGeneratorsInFile("out.txt", 1_000_000);
+            //PrintAllGeneratorsInFile("out.txt", 1_500_000);
             #endregion
 
+            LibrarianGenerator gen = new("librarianText.txt");
 
-            var wolf_gen = new WolframGenerator();
-            var res = wolf_gen.GenBits(Seed.FromSystemTime(), 200);
+            var seed = Seed.FromSystemTime();
+            var bytes = gen.GenBytes(seed, 10_000_000);
+            var res = RandomSequenceTester.CheckUniformity(bytes, 0.1, 1000);
+            //var testRes = RandomSequenceTester.CheckUniformity([], 0.1, 100);
+            var bytesCount = RandomSequenceTester.GetBytesCount(bytes);
+            Console.WriteLine("Seed: {0}", seed);
+            //Console.WriteLine("Bits: {0}", string.Join(',', bytes));
+            Console.WriteLine("Res: {0}", res);
 
-            Console.WriteLine(res.ToBitString());
+            //for (int i = 0; i < 256; i++)
+            //{
+            //    Console.WriteLine("{0} == {1}", i, bytesCount[i]);
+            //}
 
+            Console.WriteLine("Min: {0}", bytesCount.Min());
+            Console.WriteLine("Max: {0}", bytesCount.Max());
+            Console.WriteLine("Delta: {0}", bytesCount.Max() - bytesCount.Min());
+            //Console.WriteLine("TestRes: {0}", testRes);
 
         }
     }

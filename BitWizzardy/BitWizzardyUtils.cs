@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -54,6 +54,11 @@ namespace BitWizzardy
             int blockId = i / 32;
             i = i % 32;
             return (vector[blockId] & (1 << i)) >> i;
+        }
+
+        public static byte GetBit(this UInt128 num, int i)
+        {
+            return (byte)((num & (UInt128.One << i)) >> i);
         }
 
     }

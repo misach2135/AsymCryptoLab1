@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BitWizzardy\BitWizzardy.csproj" />
+	<PackageReference Include="MathNet.Numerics" Version="6.0.0-beta1" />
   </ItemGroup>
 
 </Project>

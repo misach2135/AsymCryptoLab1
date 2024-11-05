@@ -34,7 +34,7 @@ namespace CryptoGenerators
         public byte[] GenBytes(long seed, int length)
         {
             byte[] res = new byte[length];
-            long x = seed % m;
+            long x = (seed % m);
             for (int i = 0; i < length; i++)
             {
                 x = (a * x + c) % m;
@@ -45,7 +45,7 @@ namespace CryptoGenerators
                         _out = Convert.ToByte(x & 0b1111_1111);
                         break;
                     case LehmerMode.High:
-                        _out = Convert.ToByte((x & (0b1111_1111L << 8)) >> 8);
+                        _out = Convert.ToByte((x & (0b1111_1111L << 24)) >> 24);
                         break;
                 }
                 res[i] = _out;

@@ -16,17 +16,17 @@ namespace CryptoGenerators
 
         public GeffeGenerator()
         {
-            L11 = new([0, 0, 0, 0], 11, [0, 2]);
-            L9 = new([0, 0, 0, 0], 9, [0, 1, 3, 4]);
-            L10 = new([0, 0, 0, 0], 10, [0, 3]);
+            L11 = new(0, 11, [0, 2]);
+            L9 = new(0, 9, [0, 1, 3, 4]);
+            L10 = new(0, 10, [0, 3]);
         }
 
         public BitArray GenBits(long seed, int length)
         {
 
-            L11.SetState(new int[4] { (int)(seed & 0x7FF), 0, 0, 0});
-            L9.SetState(new int[4] { (int)((seed & 0x1FF0) >> 4), 0, 0, 0});
-            L10.SetState(new int[4] { (int)((seed & 0xFFC) >> 2), 0, 0, 0});
+            L11.State = new UInt128(0, (ulong)seed) & 0x7FF;
+            L9.State = (new UInt128(0, (ulong)seed) & 0x1FF0);
+            L10.State = (new UInt128(0, (ulong)seed) & 0xFFC); 
 
             Func<int> nextBit = () =>
             {
