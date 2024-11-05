@@ -9,14 +9,24 @@ namespace BitWizzardy
 {
     public static class BitWizzardyUtils
     {
-        public static long RightCyclicShift(long num, int t = 1)
+        public static long RightCyclicShift(this long num, int t = 1)
         {
             return (num >>> t) | (num << (64 - t));
         }
 
-        public static long LeftCyclicShift(long num, int t = 1)
+        public static long LeftCyclicShift(this long num, int t = 1)
         {
             return (num << t) | (num >>> (64 - t));
+        }
+
+        public static uint RightCyclicShift(this uint num, int t = 1)
+        {
+            return (num >> t) | (num << (32 - t));
+        }
+
+        public static uint LeftCyclicShift(this uint num, int t = 1)
+        {
+            return (num << t) | (num >> (32 - t));
         }
 
         public static string ToBitString(this BitArray bits)

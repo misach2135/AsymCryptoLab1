@@ -34,5 +34,17 @@ namespace CryptoGenerators
             }
             return res;
         }
+
+        public byte[] GenBytes(long seed, int length)
+        {
+            byte[] res = new byte[length];
+            BigInteger r = new(seed);
+            for (int i = 0; i < length; i++)
+            {
+                r = BigInteger.ModPow(r, 2, n);
+                res[i] = (byte)(r & 255);
+            }
+            return res;
+        }
     }
 }

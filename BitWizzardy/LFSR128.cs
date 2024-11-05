@@ -16,13 +16,13 @@ namespace BitWizzardy
     // 1. initState is not checked for size, whicj is important for state, becouse can break up state
     // 2. ...
 
-    public class LFSR
+    public class LFSR128
     {
         private Vector128<int> state;
         private int[] mask;
         private int deg;
 
-        public LFSR(int[] initState, int deg, int[] poly)
+        public LFSR128(int[] initState, int deg, int[] poly)
         {
             state = Vector128.Create(initState);
             mask = new int[poly.Length];

@@ -16,21 +16,31 @@ namespace CryptoGenerators
         private readonly BigInteger a = BigInteger.Parse("05b88c41246790891c095e2878880342e88c79974303bd0400b090fe38a688356", System.Globalization.NumberStyles.AllowHexSpecifier);
         private readonly BigInteger q = BigInteger.Parse("0675215cc3e227d3216c056cfa8f8822bb486f788641e85e0de77097e1db049f1", System.Globalization.NumberStyles.AllowHexSpecifier);
 
-        // uint may be vulnerability!!
+
         public BitArray GenBits(long seed, int length)
         {
             BitArray res = new(length);
-            BigInteger t_prev = new(seed);  // aka t_0
-            BigInteger t = new();
+            BigInteger t = new(seed);
             for (int i = 0; i < length; i++)
             {
-                t = BigInteger.ModPow(a, t_prev, p);
+                t = BigInteger.ModPow(a, t, p);
                 if (t < q) res[i] = true;
                 else res[i] = false;
-                t_prev = t;
             }
             return res;
         }
 
+        public byte[] GenBytes(long seed, int length)
+        {
+            byte[] res = new byte[length];
+            BigInteger t = new BigInteger(seed);
+            for (int i = 0; i < length; i++)
+            {
+                t = BigInteger.ModPow(a, t, p);
+                BigInteger resByte = t / (q >> 7);
+                res[i] = (byte)resByte;
+            }
+            return res;
+        }
     }
 }

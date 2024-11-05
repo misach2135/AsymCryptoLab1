@@ -15,14 +15,22 @@ namespace CryptoGenerators
         {
             BitArray res = new BitArray(length);
 
-            long r_i = seed;
+            uint r_i = Convert.ToUInt32(seed % (1U << 31));
 
             for (int i = 0; i < length; i++)
             {
                 res[i] = (r_i % 2) == 1;
-                r_i = BitWizzardyUtils.LeftCyclicShift(r_i) ^ (r_i | BitWizzardyUtils.RightCyclicShift(r_i));
+                r_i = r_i.LeftCyclicShift() ^ (r_i | r_i.RightCyclicShift());
             }
             
+            return res;
+        }
+
+        public byte[] GenBytes(long seed, int length)
+        {
+            byte[] res = new byte[length];
+            var bits = GenBits(seed, length * 8);
+            bits.CopyTo(res, 0);
             return res;
         }
     }

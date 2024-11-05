@@ -12,9 +12,14 @@ namespace CryptoGenerators
 
     public class LibrarianGenerator : IGenerator
     {
-        BitArray data;
-        
+        byte[] _data = [];
+
         public LibrarianGenerator(string filename)
+        {
+            SetSource(filename);
+        }
+
+        public void SetSource(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -30,16 +35,27 @@ namespace CryptoGenerators
                 }
             }
 
-            data = new BitArray(bytes.ToArray());
+            _data = bytes.ToArray();
         }
 
         public BitArray GenBits(long seed, int length)
         {
             BitArray res = new(length);
-            seed = Convert.ToUInt32(seed % data.Count);
+            BitArray bitsData = new BitArray(_data);
+            seed = Convert.ToUInt32(seed % bitsData.Count);
             for (int i = 0; i < length; i++)
             {
-                res[i] = data[Convert.ToInt32(seed + i) % data.Count];
+                res[i] = bitsData[Convert.ToInt32(seed + i) % bitsData.Count];
+            }
+            return res;
+        }
+
+        public byte[] GenBytes(long seed, int length)
+        {
+            byte[] res = new byte[length];
+            for (int i = 0; i < length; i++)
+            {
+                res[i] = _data[Convert.ToInt32((seed + i) % _data.Length)];
             }
             return res;
         }

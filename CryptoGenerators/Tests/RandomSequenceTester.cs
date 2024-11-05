@@ -11,20 +11,25 @@ namespace CryptoGenerators.Tests
 {
     public class RandomSequenceTester
     {
-        private byte[] bytes;
-        private int[] bytesCount;
+
+        public record struct TestsResult(byte isProbabilityEquals, byte isCharIndependence, byte isUniform);
+
+        private byte[] bytes = [];
+        private int[] bytesCount = [];
 
         public RandomSequenceTester() => bytesCount = new int[256];
 
-        public byte PerformTest(byte[] seq, double alpha, int r = 16)
+        public TestsResult PerformTest(byte[] seq, double alpha, int r = 16)
         {
             bytes = seq;
             CalcBytesCount();
             byte isProbabilityEquals = Convert.ToByte(IsProbabilityEquals(alpha));
-            byte isCharIndependence = (byte)(Convert.ToByte(IsCharIndependence(alpha)) << 1);
-            byte isUniform = (byte)(Convert.ToByte(IsUniform(alpha, r)) << 2);
+            byte isCharIndependence = (byte)(Convert.ToByte(IsCharIndependence(alpha)));
+            byte isUniform = (byte)(Convert.ToByte(IsUniform(alpha, r)));
 
-            return (byte)(isProbabilityEquals | isCharIndependence | isUniform);
+            TestsResult res = new(isProbabilityEquals, isCharIndependence, isUniform);
+
+            return res;
         }
 
         private void CalcBytesCount()
@@ -55,6 +60,7 @@ namespace CryptoGenerators.Tests
             {
                 for (int j = 0; j <= r - 1; j++)
                 {
+                    if (bytesCount[i] == 0) continue;
                     chiSquare += (double)(bytesInRsegment[j, i] * bytesInRsegment[j, i]) / (m * bytesCount[i]);
                 }
             }
@@ -79,7 +85,8 @@ namespace CryptoGenerators.Tests
 
             for (int i = 1; i < bytes.Length / 2; i++)
             {
-                bytePairsCount[BitWizzardyUtils.ShortFromBytes(bytes[2 * i - 1], bytes[2 * i])]++;
+                var shortFromByte = BitWizzardyUtils.ShortFromBytes(bytes[2 * i - 1], bytes[2 * i]);
+                bytePairsCount[shortFromByte]++;
             }
 
             for (int i = 0; i <= 255; i++)
@@ -98,6 +105,7 @@ namespace CryptoGenerators.Tests
                 for (int j = 0; j <= 255; j++)
                 {
                     int index = BitWizzardyUtils.ShortFromBytes((byte)i, (byte)j);
+                    if (firstPlaceCount[i] == 0 || secondPlaceCount[j] == 0) continue;
                     chiSquare += (double)(bytePairsCount[index] * bytePairsCount[index]) / (firstPlaceCount[i] * secondPlaceCount[j]);
                 }
             }
