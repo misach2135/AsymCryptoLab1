@@ -23,7 +23,7 @@ namespace CryptoGenerators.Tests
             return bytesCount;
         }
 
-        static public double CheckEqualProbability(byte[] seq, double alpha)
+        static public (double, double) CheckEqualProbability(byte[] seq, double alpha)
         {
             int[] bytesCount = new int[256];
 
@@ -40,10 +40,10 @@ namespace CryptoGenerators.Tests
             }
             double expectedChiSquare = Math.Sqrt(2 * 255) * Normal.InvCDF(0, 1, 1 - alpha) + 255;
 
-            return expectedChiSquare - chiSquare;
+            return (expectedChiSquare, chiSquare);
         }
 
-        static public double CheckCharIndependence(byte[] seq, double alpha)
+        static public (double, double) CheckCharIndependence(byte[] seq, double alpha)
         {
             int[,] pairsCount = new int[256, 256];
             int[] firstPlaceCount = new int[256];
@@ -80,10 +80,10 @@ namespace CryptoGenerators.Tests
             chiSquare = n * (chiSquare - 1);
             double expectedChiSquare = Math.Sqrt(2 * 255 * 255) * Normal.InvCDF(0, 1, 1 - alpha) + 255 * 255;
             Debug.Assert(chiSquare > 0);
-            return expectedChiSquare - chiSquare;
+            return (expectedChiSquare, chiSquare);
         }
 
-        static public double CheckUniformity(byte[] seq, double alpha, int r)
+        static public (double, double) CheckUniformity(byte[] seq, double alpha, int r)
         {
             int rSize = seq.Length / r;
             int n = rSize * r;
@@ -109,12 +109,14 @@ namespace CryptoGenerators.Tests
                         byteCount += byteInSegment[t, i];
                     }
                     if (byteCount == 0) continue;
-                    chiSquare += (byteInSegment[j, i] * byteInSegment[j, i]) / (byteCount * rSize);
+                    chiSquare += (byteInSegment[j, i] * byteInSegment[j, i]) / (double)(byteCount * rSize);
                 }
             }
 
+            chiSquare = n * (chiSquare - 1);
+
             double expectedChiSquare = Math.Sqrt(2 * 255 * (r - 1)) * Normal.InvCDF(0, 1, 1 - alpha) + 255 * (r - 1);
-            return expectedChiSquare - chiSquare;
+            return (expectedChiSquare, chiSquare);
         }
 
     }
